@@ -1,6 +1,8 @@
+CMakeCache.txt
 CMakeFiles/
 Makefile
-CMakeCache.txt
+bin/
+build/
 cmake_install.cmake
 src/lexer/liblexer.a
 src/parser/libparser.a
