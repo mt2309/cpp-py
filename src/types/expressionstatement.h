@@ -194,9 +194,14 @@ namespace Types {
         std::unique_ptr<CompIf> d_compIf;
     };
 
+    class ExprStarExpr {
+        std::unique_ptr<Expression> d_expr;
+        std::unique_ptr<StarExpr> d_starExpr;
+    };
+
     class CompFor {
     private:
-        std::vector<TestStarExpr> d_testStarExprs;
+        std::vector<ExprStarExpr> d_testStarExprs;
         std::unique_ptr<OrTest> d_orTest;
         CompIter d_compIter;
     };
@@ -253,7 +258,7 @@ namespace Types {
 
     class BracketAtom : public Atom {
     public:
-        ~BracketAtom() {};
+        ~BracketAtom() {}
     private:
         std::experimental::optional<YieldExpr> d_yieldExpr;
         std::experimental::optional<TestListComp> d_testListComp;
@@ -261,16 +266,57 @@ namespace Types {
 
     class SubscriptAtom : public Atom {
     public:
-        ~SubscriptAtom() {};
+        ~SubscriptAtom() {}
     private:
         std::experimental::optional<TestListComp> d_testListComp;
     };
 
     class BraceAtom : public Atom {
     public:
-        ~BraceAtom() {};
+        ~BraceAtom() {}
     private:
         std::unique_ptr<DictOrSetMaker> d_dictOrSet;
+    };
+
+    class NameAtom : public Atom {
+    public:
+        ~NameAtom() {}
+    private:
+        Name d_name;
+    };
+
+    class NumberAtom : public Atom {
+    public:
+        ~NumberAtom() {}
+    private:
+        Number d_number;
+    };
+
+    class StringAtom : public Atom {
+    public:
+        ~StringAtom() {}
+    private:
+        std::vector<std::string> d_strings;
+    };
+
+    class EllipsisAtom : public Atom {
+    public:
+        ~EllipsisAtom() {}
+    };
+
+    class NoneAtom : public Atom {
+    public:
+        ~NoneAtom() {}
+    };
+
+    class TrueAtom : public Atom {
+    public:
+        ~TrueAtom() {}
+    };
+
+    class FalseAtom : public Atom {
+    public:
+        ~FalseAtom() {}
     };
 
     // Not sure what this actually means:
@@ -379,10 +425,9 @@ namespace Types {
     };
 
     class IfTest {
-
     private:
         OrTest d_orTest;
-        std::shared_ptr<Test> d_test;
+        std::unique_ptr<Test> d_test;
     };
 
     // or_test ['if' or_test 'else' test] | lambdef

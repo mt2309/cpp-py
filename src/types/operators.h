@@ -57,6 +57,15 @@ namespace Types {
         NEGATIVE,
         BIT_NOT
     };
+
+    enum class ImportOperator {
+        PERIOD,
+        ELLIPSIS
+    };
+
+    enum class Token {
+        
+    };
 }
 
 #endif

@@ -22,14 +22,8 @@ namespace Types {
     class SimpleStatement : public Statement {
     public:
         ~SimpleStatement() {}
-
-        void addStatement(const std::shared_ptr<SmallStatement>& stmt)
-        {
-            d_statements.push_back(stmt);
-        }
-
     private:
-        std::vector<std::shared_ptr<SmallStatement>> d_statements;
+        std::vector<std::unique_ptr<SmallStatement>> d_statements;
     };
 
     class CompoundStatement : public Statement {
@@ -37,7 +31,7 @@ namespace Types {
         ~CompoundStatement() {};
 
     private:
-        std::shared_ptr<CompoundStmt> d_compoundStatement;
+        std::unique_ptr<CompoundStmt> d_compoundStatement;
     };
 }
 
