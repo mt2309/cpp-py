@@ -1,3 +1,6 @@
+#ifndef STATEMENT_H
+#define STATEMENT_H
+
 #include <vector>
 #include <string>
 #include <memory>
@@ -37,3 +40,5 @@ namespace Types {
         std::shared_ptr<CompoundStmt> d_compoundStatement;
     };
 }
+
+#endif

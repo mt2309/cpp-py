@@ -1,4 +1,7 @@
+#ifndef SMALL_STATEMENT_H
+#define SMALL_STATEMENT_H
 
+#include "expressionstatement.h"
 
 namespace Types {
     // small_stmt: (expr_stmt | del_stmt | pass_stmt | flow_stmt |
@@ -11,6 +14,8 @@ namespace Types {
     class ExpressionStatement : public SmallStatement {
     public:
         ~ExpressionStatement() {}
+    private:
+        ExpressionStmt d_exprStmt;
     };
 
     class DeleteStatement : public SmallStatement {
@@ -48,3 +53,5 @@ namespace Types {
         ~AssertStatement() {}
     };
 }
+
+#endif

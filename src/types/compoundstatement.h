@@ -1,3 +1,6 @@
+#ifndef COMPOUND_STATEMENT_H
+#define COMPOUND_STATEMENT_H
+
 namespace Types {
     // if_stmt | while_stmt | for_stmt | try_stmt | with_stmt | funcdef | classdef | decorated | async_stmt
     class CompoundStmt {
@@ -45,3 +48,5 @@ namespace Types {
         ~AsyncStatement() {}
     };
 }
+
+#endif
